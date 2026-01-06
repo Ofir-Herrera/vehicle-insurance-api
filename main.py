@@ -1,5 +1,5 @@
 # Import core frameworks and project modules
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from models import VehicleInfoRequest, APIResponse, VehicleData
 from database import vehicle_db
@@ -32,11 +32,11 @@ def get_vehicle_info(request: VehicleInfoRequest):
     vehicle_raw = vehicle_db.get(request.license_plate)
 
     # 2. Handle case where vehicle doesn't exist
-    # If we didn't find anything, return a clear error.
+    # If we didn't find anything, raise a clear error.
     if not vehicle_raw:
-        return APIResponse(
-            success=False,
-            error=f"Vehicle with license plate {request.license_plate} not found in the system."
+        raise HTTPException(
+            status_code=404,
+            detail=f"Vehicle with license plate {request.license_plate} not found"
         )
 
     # 3. Calculate value
