@@ -1,13 +1,15 @@
-# Python 
-__pycache__/
-*.py[cod]
-*$py.class
-
-# Virtual Environment
+# Python virtual environment
 .venv/
 venv/
 ENV/
 
-# Mac system files
-.DS_Store
+# PyCharm settings
+.idea/
 
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# OS generated files
+.DS_Store

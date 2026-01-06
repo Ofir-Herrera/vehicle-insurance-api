@@ -16,3 +16,4 @@ class Settings:
 
 # Create a singleton instance of the settings
 settings = Settings()
+
