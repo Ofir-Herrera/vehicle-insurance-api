@@ -67,7 +67,21 @@ The API is deployed as a **serverless service** using **Google Cloud Run**.
 - **CORS Configuration:** Enabling cross-origin requests from the Insait platform.
 
 ---
+## 🔒 API Security & Authentication
 
+To ensure the API is secured and only accessible by authorized clients (like our Insait AI Agent), I have implemented a **Header-based Authentication** mechanism.
+
+### How it works:
+- The endpoint `/vehicle-info` requires an `Authorization` header.
+- The system validates a **Bearer Token** to grant access.
+- Any request without a valid token will receive a `401 Unauthorized` response.
+
+### Usage in Insait / Swagger:
+- **Header Key:** `Authorization`
+- **Header Value:** `Bearer mysecrettoken123`
+
+> **Note:** For development purposes, the token validation is case-insensitive to ensure robust integration across different platforms.
+--- 
 ## 🤖 **AI Usage & Development Process**
 
 AI tools were used as **supporting development aids**, not as code authors.
